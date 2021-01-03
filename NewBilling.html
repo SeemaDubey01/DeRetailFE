@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head  xmlns:th="http://www.thymeleaf.org">
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Billing</title>
+<link href="/css/main.css" rel="stylesheet"/>
+</head>
+<body>
+	<div class="header-bg">
+        <img src="/images/grocery-icon.png" alt="icon" width="80px" />
+        <div>Vikas Super Mart</div>
+        <div class="header-button">
+            <a href="UserHome.html"><img src="/images/home-button.png" alt="home"/></a>
+            <a href="home.html"><img src="/images/logout.png" alt="logout"/></a>
+            
+        </div>
+	</div>
+	<div class="container">
+		<div class="home-nav-bar">
+			<div class="home-nav-bar-item"><a href="/UserHome.html">Dashboard</a></div>
+			<div class="home-nav-bar-item"><a href="/NewBilling.html">New Billing</a></div>
+			<div class="home-nav-bar-item"><a href="/SearchInvoice.html">Search Invoice</a></div>
+			<div class="home-nav-bar-item"><a href="/InventoryHome.html">Purchase</a></div>
+		</div>
+		<div class="home-content-bar">
+			<h1>New Billing</h1>
+			<form th:action="@{NewBilling}" th:object="${header}" method="POST">
+				<label>Invoice No</label>
+				<input type="text" th:field="*{drshBillNo}"/><br/>
+				<label>Seller</label>
+				<input type="text" th:field="*{drshSeller}"/><br/>
+				<p/>
+				<label>Product Code</label>
+				<input type="text" th:field="*{sellDetails[0].drsdProductCode}"/><br/>
+				<label>Quantity</label>
+				<input type="text" th:field="*{sellDetails[0].drsdQuantity}"/><br/>
+				<label>Unit Price</label>
+				<input type="text" th:field="*{sellDetails[0].drsdUnitPrice}"/><br/>
+				<p/>
+				<label>Product Code</label>
+				<input type="text" th:field="*{sellDetails[1].drsdProductCode}"/><br/>
+				<label>Quantity</label>
+				<input type="text" th:field="*{sellDetails[1].drsdQuantity}"/><br/>
+				<label>Unit Price</label>
+				<input type="text" th:field="*{sellDetails[1].drsdUnitPrice}"/><br/>
+				
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

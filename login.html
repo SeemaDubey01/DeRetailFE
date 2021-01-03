@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head xmlns:th="http://www.thymeleaf.org">
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<link href="/css/main.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="first-page">
+    <header>
+        <div class="header-bg">
+            <span>Vikas Super Mart</span>
+        </div>
+    </header>
+    <form action="UserHome.html" method="GET">
+    <div class="login-frame">
+        <div class="login-frame-inner">
+            <div class="login-frame-header">Login</div>
+            <label class="login-frame-label">Username</label><br/>
+            <input class="login-frame-input" type="text" id="username"><br/>
+            <label class="login-frame-label">Password</label><br/>
+            <input class="login-frame-input" type="password" id="password"><br/>
+            <button type="submit" class="login-frame-btn-submit">Submit</button>
+            <button type="cancel" class="login-frame-btn-cancel">Cancel</button>
+        </div>
+    </div>
+    </form>
+    <a href="/home.html"> Cancel</a>
+</div>
+</body>
+</html>
