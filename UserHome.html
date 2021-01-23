@@ -1,33 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>User home</title>
-<link href="/css/main.css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/jquery-3.5.1.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/theme.js"></script>
 </head>
 <body>
-<div class="header-bg">
-        <img src="/images/grocery-icon.png" alt="icon" width="80px" />
-        <div>Vikas Super Mart</div>
-        <div class="header-button">
-            <a href="UserHome.html"><img src="/images/home-button.png" alt="home"/></a>
-            <a href="home.html"><img src="/images/logout.png" alt="logout"/></a>
-            
-        </div>
+<div class="wrapper">
+<!-- sidebar -->
+<div class="container-fluid sidebar">
+<!-- sidebar top navigation -->
+<nav class="navbar fixed-top navbar-dark">
+    <div class="navbar-brand fas fa-shopping-cart"></div>
+    <div class="navbar-brand sidebar-brand">DeRetail</div>
+</nav>
+<hr/>
+<!-- sidebar menu -->
+<nav class="navbar navbar-dark fixed-top" id="sidebar-fixed-nav">
+<ul class="nav navbar-nav navbar-dark" >
+    <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-file-invoice-dollar"></i><span>New Invoice</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="table.html"><i class="fas fa-search-dollar"></i><span>Search invoice</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="login.html"><i class="fas fa-database"></i><span>Invenstory Master</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-plus-circle"></i><span>Add Item</span></a></li>
+    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-power-off"></i><span>Log out</span></a></li>
+</ul>
+</nav>
+
+<div class="fixed-bottom ml-4 text-white nav-footer">
+    <span>DeRetail@2021</span>
 </div>
-<div class="container">
-    <div class="home-nav-bar">
-        <div class="home-nav-bar-item"><a href="/UserHome.html">Dashboard</a></div>
-        <div class="home-nav-bar-item"><a href="/NewBilling.html">New Billing</a></div>
-        <div class="home-nav-bar-item"><a href="/SearchInvoice.html">Search Invoice</a></div>
-        <div class="home-nav-bar-item"><a href="/InventoryHome.html">Purchase</a></div>
+</div>  
+
+<!-- content -->
+<div class="container-fluid contentbar">
+<!-- content top bar-->
+<nav class="navbar fixed-top navbar-expand bg-white top-nav shadow">
+    <div class="container-fluid">
+    <button class="sidebar-toggle-top d-md-none btn" type="button" data-toggle="collapse" data-target="#">
+        <i class="fa fa-bars"></i>
+    </button>
+    <ul class="nav navbar-nav ml-auto">
+        <li>
+            <i class="fas fa-bell fa-fw"></i>
+        </li>
+        <li>
+            <span class="topbar-divider"></span>
+        </li>
+        <li>
+            <a href="#">
+                <span class="d-none d-lg-inline">Admin</span>
+                <img class="rounded-circle img-user" src="/images/avatar1.jpeg"/>
+            </a>
+        </li>
+    </ul>
     </div>
-    <div class="home-content-bar">
-        <div class="welcome-note">
-            Welcome Vikas
-        </div>
+</nav>
+<div style="height: 100px;"></div>
+    
+<!-- dashboard figure box -->
+<div class="container-fluid">
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-lg-4 py-2">
+        <a class="card shadow border-left-primary" href="#">
+            <div class="card-body">
+                total sell for today
+            </div>
+        </a>
     </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-4 py-2">
+        <a class="card shadow border-left-success" href="#">
+            <div class="card-body">
+                total purchase for today
+            </div>
+        </a>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-lg-4 py-2">
+        <a class="card shadow border-left-secondary" href="#">
+            <div class="card-body">
+                Invoice details
+            </div>
+        </a>
+    </div>
+
+</div>
+</div>
+    
+        <!-- dashboard graphs -->
+
+</div>
+</div>
 
 </div>
 </body>
