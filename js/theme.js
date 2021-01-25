@@ -4,12 +4,13 @@
   $('.sidebar-toggle-top').click( function() {
     $('.sidebar').toggleClass('toggled');
     $('.top-nav.fixed-top').toggleClass('toggled');
-    /*if ($('.sidebar').hasClass('toggled')) {
-      $('.sidebar').hide();
-    }
-    else{
-      $('.sidebar').show();
-    };*/
   });
 
+  $('.sidebarHalfToggler').click( function() {
+    $('.sidebar').toggleClass('halfToggled');
+   // $('.sidebar-brand').toggleClass('halfToggled');
+    $('.top-nav').toggleClass('halfToggled');
+    $('.sidebar-fixed-nav').toggleClass('halfToggled');
+    $('.sidebarHalfToggler').toggleClass('toggled');
+  });
 });

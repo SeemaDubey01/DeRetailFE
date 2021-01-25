@@ -4,50 +4,157 @@
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>New Billing</title>
-<link href="/css/main.css" rel="stylesheet"/>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style-nb.css">
+<script src="/js/jquery-3.5.1.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/theme.js"></script>
+<script src="/js/NewBilling.js"></script>
 </head>
 <body>
-	<div class="header-bg">
-        <img src="/images/grocery-icon.png" alt="icon" width="80px" />
-        <div>Vikas Super Mart</div>
-        <div class="header-button">
-            <a href="UserHome.html"><img src="/images/home-button.png" alt="home"/></a>
-            <a href="home.html"><img src="/images/logout.png" alt="logout"/></a>
-            
-        </div>
+<div class="wrapper">
+	<!-- sidebar -->
+<div class="container-fluid sidebar">
+	<!-- sidebar top navigation -->
+	<nav class="navbar fixed-top navbar-dark header-hr">
+		<div class="navbar-brand fas fa-shopping-cart"></div>
+		<div class="navbar-brand" id="sidebar-brand">DeRetail</div>
+	</nav>
+
+	<!-- sidebar menu -->
+	<nav class="navbar navbar-dark fixed-top sidebar-fixed-nav">
+	<ul class="nav navbar-nav navbar-dark" >
+		<li class="nav-item"><a class="nav-link" href="UserHome.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+		<li class="nav-item"><a class="nav-link active" href="NewBilling.html"><i class="fas fa-file-invoice-dollar"></i><span>New Invoice</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span style="padding-left: 7px;">Search Inv</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-database"></i><span style="padding-left: 7px;">Invenstory</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-plus-circle"></i><span style="padding-left: 10px;">Add Item</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="home.html"><i class="fas fa-power-off"></i><span style="padding-left: 10px;">Log out</span></a></li>
+	</ul>
+	</nav>
+	<div class="sidebarHalfToggler" id="sidebarHalfTogglerDiv"></div>
+	<div class="fixed-bottom text-white ml-1">
+		<span>DeRetail@2021</span>
 	</div>
-	<div class="container">
-		<div class="home-nav-bar">
-			<div class="home-nav-bar-item"><a href="/UserHome.html">Dashboard</a></div>
-			<div class="home-nav-bar-item"><a href="/NewBilling.html">New Billing</a></div>
-			<div class="home-nav-bar-item"><a href="/SearchInvoice.html">Search Invoice</a></div>
-			<div class="home-nav-bar-item"><a href="/InventoryHome.html">Purchase</a></div>
+</div>  <!-- end of sidebar-->
+	
+<!-- content -->
+<div class="container-fluid contentbar">
+	<!-- content top bar-->
+	<nav class="navbar fixed-top navbar-expand bg-white top-nav shadow">
+		<div class="container-fluid">
+		<button class="sidebar-toggle-top d-md-none btn" type="button" data-toggle="collapse" data-target="#">
+			<i class="fa fa-bars"></i>
+		</button>
+		<ul class="nav navbar-nav ml-auto">
+			<li>
+				<i class="fas fa-bell fa-fw"></i>
+			</li>
+			<li>
+				<span class="topbar-divider"></span>
+			</li>
+			<li>
+				<a href="#">
+					<span class="d-none d-lg-inline">Admin</span>
+					<img class="rounded-circle img-user" src="/images/avatar1.jpeg"/>
+				</a>
+			</li>
+		</ul>
 		</div>
-		<div class="home-content-bar">
-			<h1>New Billing</h1>
-			<form th:action="@{NewBilling}" th:object="${header}" method="POST">
-				<label>Invoice No</label>
-				<input type="text" th:field="*{drshBillNo}"/><br/>
-				<label>Seller</label>
-				<input type="text" th:field="*{drshSeller}"/><br/>
-				<p/>
-				<label>Product Code</label>
-				<input type="text" th:field="*{sellDetails[0].drsdProductCode}"/><br/>
-				<label>Quantity</label>
-				<input type="text" th:field="*{sellDetails[0].drsdQuantity}"/><br/>
-				<label>Unit Price</label>
-				<input type="text" th:field="*{sellDetails[0].drsdUnitPrice}"/><br/>
-				<p/>
-				<label>Product Code</label>
-				<input type="text" th:field="*{sellDetails[1].drsdProductCode}"/><br/>
-				<label>Quantity</label>
-				<input type="text" th:field="*{sellDetails[1].drsdQuantity}"/><br/>
-				<label>Unit Price</label>
-				<input type="text" th:field="*{sellDetails[1].drsdUnitPrice}"/><br/>
+	</nav>
+	<div style="height: 70px;"></div>
+		
+	<!-- content body -->
+	<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 m-1">
+		<div class="row bg-white shadow">
+			<div class="col">
 				
-				<button type="submit">Submit</button>
+			<form class="myform">
+			<div class="mb-3">
+			<label for="productCode" class="form-label">Product Code</label>
+			<input type="number" class="form-control" id="productCode">
+			</div><div class="mb-3">
+			<label for="productDescr" class="form-label">Product</label>
+			<input type="text" class="form-control" id="productDescr">
+			</div><div class="mb-3">
+			<label for="unitPrice" class="form-label">Unit Price</label>
+			<input type="number" class="form-control" id="unitPrice">
+			</div><div class="mb-3">
+			<label for="quantity" class="form-label">Quantity</label>
+			<input type="number" class="form-control" id="quantity">
+			</div><div class="mb-3">
+			<label for="totalPrice" class="form-label">Total Price</label>
+			<input type="number" class="form-control" id="totalPrice">
+			</div><div class="mb-3 align-items-center">
+			<button class="btn btn-primary" type="button" onclick="addItem">Add</button>
+			<button class="btn btn-secondary" type="reset">Clear</button>
+			</div>
 			</form>
+		
+			</div>
 		</div>
-	</div>
+		<div class="row bg-white shadow mt-2"><div class="col">
+		<!-- total price --> 
+		<div>
+			<h4 class="text-success">Total bill</h4>
+			<div class="row">
+				<div class="col-6">Total </div>
+				<div class="col-1">Rs.</div>
+				<div class="col-4 text-right">1000.00</div>
+			</div>
+			<div class="row">
+				<div class="col-6">GST 18%</div>
+				<div class="col-1">Rs.</div>
+				<div class="col-4 text-right">180.00</div>
+			</div>
+			<div class="row">
+			<div class="col-11 border-bottom m-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-6">Payable</div>
+				<div class="col-1">Rs.</div>
+				<div class="col-4 text-right">1180.00</div>
+			</div>
+		</div>
+		</div></div>
+		
+		</div>
+
+		<!-- item details -->
+		<div class="col-md-7 m-1  bg-white shadow table-responsive">
+<!-- addition >
+			<table class="table table-hover">
+				<tr>
+				<th>#</th>
+				<th>Product #</th>
+				<th>Description</th>
+				<th>Unit Price</th>
+				<th>Quantity</th>
+				<th>Total Price</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>1234321</td>
+					<td>Test product FE</td>
+					<td>11.11</td>
+					<td>4</td>
+					<td>44.44</td>
+				</tr>
+			</table>
+<!-- addition -->
+		</div>
+		
+		
+	</div> <!-- end of content row -->
+	</div> <!-- end of content body -->
+		
+</div> <!-- end of content area-->
+</div> <!-- end of wrapper -->
 </body>
 </html>
+
+
