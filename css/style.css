@@ -22,7 +22,7 @@
 }
 .contentbar {
     background-color: #fcfcfc;
-    min-height: 80vh;
+    min-height: 100vh;
 }
 .sidebar.halfToggled {max-width: 6rem;}
 .sidebar.halfToggled  #sidebar-brand {display: none;}

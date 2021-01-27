@@ -3,6 +3,7 @@ var wsSellDetailsArray = [];
 $(document).ready(function(){
     /* write current date and time on page */ 
     let d = new Date();
+    alert ('timestamp : ' + d.getFullYear() + '-' + ('0' + (d.getMonth() + 1)).slice(-2) + '-' + ('0' + d.getDate()).slice(-2) + ' ' + d.toTimeString().substr(0,8));
     $('#date-today').html('<b>Date :</b> ' + d.toDateString() + '   <b>Time:</b> ' + d.toTimeString().substr(0,8));
     
     /* change background color of input boxes */
@@ -39,7 +40,7 @@ function resetNewBill(){
     $('#billing-table').html('<tbody><tr class="table-light"><th>#</th><th>Description</th><th>Unit Price</th><th>Qty</th><th>Total Price</th></tr></tbody>');
     index = 0;
     wsSellDetailsArray = [];
-    calculateBillAmount();
+    calculateBillAmount();''
 }
 function addItem(){
     /*if($('#productCode').val()==0){

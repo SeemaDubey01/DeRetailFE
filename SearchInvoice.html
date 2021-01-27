@@ -11,7 +11,7 @@
 <script src="/js/jquery-3.5.1.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/theme.js"></script>
-<script src="/js/NewBilling.js"></script>
+<script src="/js/searchinvoice.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -27,8 +27,8 @@
 	<nav class="navbar navbar-dark position-sticky sidebar-fixed-nav">
 	<ul class="nav navbar-nav navbar-dark" >
 		<li class="nav-item"><a class="nav-link" href="UserHome.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-		<li class="nav-item"><a class="nav-link active" href="NewBilling.html"><i class="fas fa-file-invoice-dollar"></i><span>New Invoice</span></a></li>
-		<li class="nav-item"><a class="nav-link" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span>Search Inv</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="NewBilling.html"><i class="fas fa-file-invoice-dollar"></i><span>New Invoice</span></a></li>
+		<li class="nav-item"><a class="nav-link active" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span>Search Inv</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-database"></i><span>Invenstory</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-plus-circle"></i><span>Add Item</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="home.html"><i class="fas fa-power-off"></i><span>Log out</span></a></li>
@@ -69,6 +69,109 @@
 <div class="container-fluid contentbar">
 <!--        write conent below this point  -->
 
+<!-- search options -->
+<div class="row mb-2"> 
+	<div class="col p-2 bg-white shadow">
+		<div class="row">
+		<div class="col-sm-4 col-md-3 myform">
+			<label class="form-label">Start Date: </label>
+			<input type="date" class="form-control">
+		</div>
+		<div class="col-sm-4 col-md-3 myform">
+			<label class="form-label">End Date: </label>
+			<input type="date" class="form-control">
+		</div>
+		<div class="col-sm-4 col-md-3 myform">
+			<label class="form-label">Bill#: </label>
+			<input type="number" class="form-control">
+		</div>
+		<div class="col-sm-12 col-md-3 mt-2 d-flex align-items-end">
+			<button class="btn btn-primary btn-block" type="button">Search</button>
+		</div>
+		</div>
+	</div>
+</div>
+
+<!-- search result -->
+
+<div class="row mb-2" id="sell-header-div">
+<div class="col bg-white shadow p-0">
+	<div class="table-responsive">
+		<table class="table table-hover" id="search-table">
+			<tr class="table-light">
+				<th>Date</th>
+				<th>Invoice#</th>
+				<th>Seller</th>
+				<th>#Items</th>
+				<th>Total Amount</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>27 Jan 2021</td>
+				<td>1234</td>
+				<td>Sample Seller</td>
+				<td>4</td>
+				<td>123.45</td>
+				<td class="text-center">
+					<span class="btn fas fa-info text-info" data-toggle="tooltip" title="Details" onclick="selldetails()">
+					</span>
+					<span class=" fas fa-edit" >	
+					</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</div>
+
+<div class="row" id="sell-detail-div">
+<div class="col-md-12 bg-white shadow">
+	<div class="col-12 text-right">
+		<button class="btn close" onclick="showSellHeader()">&times;</button>
+	</div>
+	<h4 class="text-success">Bill No: 4</h4>
+	<span> Date</span>
+	<div class="table-responsive">
+		<table class="table table-hover" id="search-detail-table">
+			<tr class="table-light">
+			<th>#</th>
+			<th>Description</th>
+			<th>Unit Price</th>
+			<th>Qty</th>
+			<th>Total Price</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>test bill</td>
+				<td>11.11</td>
+				<td>2</td>
+				<td>22.22</td>
+				</tr>
+	
+		</table>
+	</div>
+	<div class="col-md-6">
+		<div class="col-12 border-bottom mb-2"></div>
+		<h4 class="text-success">Total bill</h4>
+		<div class="row">
+			<div class="col-6">Total </div>
+			<div class="col-1">Rs.</div>
+			<div class="col-4 text-right" id="totalBill">0.00</div>
+		</div>
+		<div class="row">
+			<div class="col-6">GST 18%</div>
+			<div class="col-1">Rs.</div>
+			<div class="col-4 text-right" id="gst">0.00</div>
+		</div>
+		<div class="col-12 border-bottom mb-2"></div>
+		<div class="row mb-3">
+			<div class="col-6">Payable</div>
+			<div class="col-1">Rs.</div>
+			<div class="col-4 text-right" id="payable">0.00</div>
+		</div>
+	</div>
+</div>
+</div>
 
 <!--        write conent above this point  -->
 </div> <!-- end of content body -->
