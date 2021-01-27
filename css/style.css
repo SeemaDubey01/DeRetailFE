@@ -9,12 +9,11 @@
 .sidebar {
     max-width: 13rem;
     background-color:#1a6c19;
-    box-shadow: 2rem 2.75rem 0 rgba(58,59,69,.15)!important;
 }
 .sidebar > .fixed-top {right: auto;}
 .sidebar.toggled {display: none;}
 @media (max-width:767px){
-    .sidebar {max-width: 6rem;}
+    .sidebar {width: 90px;}
     #sidebar-brand {display: none;}
     .fixed-bottom {font-size: 0.8rem;}
 }
@@ -23,7 +22,7 @@
 }
 .contentbar {
     background-color: #fcfcfc;
-    min-height: 195vh;
+    min-height: 80vh;
 }
 .sidebar.halfToggled {max-width: 6rem;}
 .sidebar.halfToggled  #sidebar-brand {display: none;}
@@ -32,7 +31,7 @@
 .top-nav .fa-bell {font-size: 25px; line-height: 40px;}
 .top-nav{left: 13rem;}
 @media (max-width:767px){
-    .top-nav {left: 6rem;}
+    .top-nav {left: 90px;}
     .top-nav.toggled{left: 0px;}
 }
 .top-nav.fixed-top.halfToggled {left: 6rem;}
@@ -54,7 +53,7 @@
 }
 .sidebar-fixed-nav {
     top: 6rem;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 .sidebar-fixed-nav i {
     width: 20px;
@@ -64,18 +63,18 @@
 }
 @media (max-width:767px){
     .sidebar-fixed-nav{
-        max-width: 7rem;
-        font-size: 1.6rem;margin-left: 0;
+        max-width: 90px;
+        font-size: 1.6rem;margin-left: 0;padding-left: 0;
     }
-    .sidebar-fixed-nav i{margin-left: 20px;}
+    .sidebar-fixed-nav i{margin-left: 10px;}
     .sidebar-fixed-nav span {
-        font-size: .8rem; margin-left: 0;
+        font-size: .7rem; margin-left: 0;
         display: block;
     }
 }
 .sidebar-fixed-nav.halfToggled {
     max-width: 7rem;
-    font-size: 1.6rem;margin-left: 0;
+    font-size: 1.6rem;margin-left: 0;padding-left: 0;
 }
 .sidebar-fixed-nav.halfToggled i{margin-left: 20px;}
 .sidebar-fixed-nav.halfToggled span {
@@ -92,7 +91,7 @@
     border-left: 4px solid #6c757d;
 }
 .sidebarHalfToggler{
-    position: fixed; 
+    position:fixed;
     top:400px; left: 4rem;
     border-radius: 50%;
     background-color: hsla(0,0%,100%,.25);
@@ -101,10 +100,11 @@
     text-align: center;
     cursor: pointer;
 }
-.sidebarHalfToggler.toggled {top: 600px; left:1.2rem;}
+.sidebarHalfToggler.toggled {top: 600px; left:1.5rem;}
 
 .sidebarHalfToggler.toggled:after{font-weight:900;content:"\f105";
     font-family:Font Awesome\ 5 Free;}
 .sidebarHalfToggler:after{font-weight:900;content:"\f104";
         font-family:Font Awesome\ 5 Free;}
 @media (max-width:767px){.sidebarHalfToggler{display: none;}}
+.border-transparent-1 {border: 1rem solid transparent;}

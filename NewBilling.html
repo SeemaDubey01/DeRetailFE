@@ -24,14 +24,14 @@
 	</nav>
 
 	<!-- sidebar menu -->
-	<nav class="navbar navbar-dark fixed-top sidebar-fixed-nav">
+	<nav class="navbar navbar-dark position-sticky sidebar-fixed-nav">
 	<ul class="nav navbar-nav navbar-dark" >
 		<li class="nav-item"><a class="nav-link" href="UserHome.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
 		<li class="nav-item"><a class="nav-link active" href="NewBilling.html"><i class="fas fa-file-invoice-dollar"></i><span>New Invoice</span></a></li>
-		<li class="nav-item"><a class="nav-link" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span style="padding-left: 7px;">Search Inv</span></a></li>
-		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-database"></i><span style="padding-left: 7px;">Invenstory</span></a></li>
-		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-plus-circle"></i><span style="padding-left: 10px;">Add Item</span></a></li>
-		<li class="nav-item"><a class="nav-link" href="home.html"><i class="fas fa-power-off"></i><span style="padding-left: 10px;">Log out</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span>Search Inv</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-database"></i><span>Invenstory</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-plus-circle"></i><span>Add Item</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="home.html"><i class="fas fa-power-off"></i><span>Log out</span></a></li>
 	</ul>
 	</nav>
 	<div class="sidebarHalfToggler" id="sidebarHalfTogglerDiv"></div>
@@ -69,9 +69,15 @@
 	<!-- content body -->
 	<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-4 m-1">
-		<div class="row bg-white shadow">
-			<div class="col">
+		<div class="col-md-12  mb-1 bg-white shadow">
+			<h4 class="text-success">Bill No: 4</h4>
+			<span id="date-today"></span>
+		</div>
+	</div>
+	<div class="row"> <!-- row for form and item details -->
+		<div class="col-md-4">
+		<div class="row">
+			<div class="col bg-white shadow m-1">
 				
 			<form class="myform">
 			<div class="mb-3">
@@ -82,42 +88,40 @@
 			<input type="text" class="form-control" id="productDescr">
 			</div><div class="mb-3">
 			<label for="unitPrice" class="form-label">Unit Price</label>
-			<input type="number" class="form-control" id="unitPrice">
+			<input type="number" class="form-control" step="0.01" id="unitPrice">
 			</div><div class="mb-3">
 			<label for="quantity" class="form-label">Quantity</label>
 			<input type="number" class="form-control" id="quantity">
 			</div><div class="mb-3">
 			<label for="totalPrice" class="form-label">Total Price</label>
-			<input type="number" class="form-control" id="totalPrice">
+			<input type="number" class="form-control" id="totalPrice" disabled>
 			</div><div class="mb-3 align-items-center">
-			<button class="btn btn-primary" type="button" onclick="addItem">Add</button>
+			<button class="btn btn-primary" type="button" onclick="addItem()">Add</button>
 			<button class="btn btn-secondary" type="reset">Clear</button>
 			</div>
 			</form>
-		
 			</div>
 		</div>
-		<div class="row bg-white shadow mt-2"><div class="col">
-		<!-- total price --> 
+		<div class="row"><div class="col bg-white shadow m-1"><!-- total price --> 
 		<div>
 			<h4 class="text-success">Total bill</h4>
 			<div class="row">
 				<div class="col-6">Total </div>
 				<div class="col-1">Rs.</div>
-				<div class="col-4 text-right">1000.00</div>
+				<div class="col-4 text-right" id="totalBill">0.00</div>
 			</div>
 			<div class="row">
 				<div class="col-6">GST 18%</div>
 				<div class="col-1">Rs.</div>
-				<div class="col-4 text-right">180.00</div>
+				<div class="col-4 text-right" id="gst">0.00</div>
 			</div>
 			<div class="row">
 			<div class="col-11 border-bottom m-2"></div>
 			</div>
-			<div class="row">
+			<div class="row mb-3">
 				<div class="col-6">Payable</div>
 				<div class="col-1">Rs.</div>
-				<div class="col-4 text-right">1180.00</div>
+				<div class="col-4 text-right" id="payable">0.00</div>
 			</div>
 		</div>
 		</div></div>
@@ -125,30 +129,101 @@
 		</div>
 
 		<!-- item details -->
-		<div class="col-md-7 m-1  bg-white shadow table-responsive">
-<!-- addition >
-			<table class="table table-hover">
-				<tr>
+		<div class="col-md-8">
+		<div class="row">
+			<!-- addition -->
+			<div class="col bg-white shadow m-1 p-0">
+			<div class="table-responsive">
+			<table class="table table-hover" id="billing-table">
+				<tr class="table-light">
 				<th>#</th>
-				<th>Product #</th>
 				<th>Description</th>
 				<th>Unit Price</th>
-				<th>Quantity</th>
+				<th>Qty</th>
 				<th>Total Price</th>
 				</tr>
-				<tr>
-					<td>1</td>
-					<td>1234321</td>
-					<td>Test product FE</td>
-					<td>11.11</td>
-					<td>4</td>
-					<td>44.44</td>
-				</tr>
 			</table>
-<!-- addition -->
+			</div>
+			</div>
+			<!-- addition -->
 		</div>
-		
-		
+		</div>
+	</div>
+	<div class="row"> <!-- button for payment-->
+		<div class="col-md-11 m-3 text-center">
+			<button class="btn bg-success btn-lg text-white shadow" data-toggle="modal" data-target="#payment-modal">Payment</button>
+			<button class="btn btn-outline-secondary btn-lg shadow" onclick="resetNewBill()">Reset</button>
+		</div>
+	</div>
+	<!-- Modal for payment options -->
+	<div class="modal fade" id="payment-modal" role="dialog">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Payment Option</h5>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-center">
+				<button class="btn btn-success btn-lg" data-dismiss="modal" data-toggle="modal" data-target="#payment-card">
+					Pay by Card<br/><i class="fas fa-credit-card"></i></button>
+				<button class="btn btn-success btn-lg" data-dismiss="modal" data-toggle="modal" data-target="#payment-cash">
+					Pay by Cash<br/><i class="fas fa-money-bill-wave"></i></button>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="payment-card" role="dialog"> <!-- modal for pay by card -->
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Pay by card <i class="fas fa-credit-card text-primary"></i></h5>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body text-center">
+				<div class="row mb-3">
+					<div class="col-6"><strong>Amount Payable</strong></div>
+					<div class="col-6" id="pay-by-card-amt"></div>
+				</div>
+				<h5>Payment Reference Number:</h5>
+				<input type="number" class="form-control" id="payment-reference" value="0" autofocus>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="billSubmit()">Complete</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="payment-cash" role="dialog"> <!-- modal for pay by cash -->
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Pay by cash <i class="fas fa-money-bill-wave text-primary"></i></h5>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-6"><strong>Amount Payable</strong></div>
+					<div class="col-6" id="pay-by-cash-amt"></div>
+				</div>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="billSubmit()">Complete</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">close</button>
+			</div>
+			</div>
+		</div>
+	</div>
 	</div> <!-- end of content row -->
 	</div> <!-- end of content body -->
 		
