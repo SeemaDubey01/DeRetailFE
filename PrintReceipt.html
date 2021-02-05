@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head  xmlns:th="http://www.thymeleaf.org">
+<head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>New Billing</title>
+<title>Print Receipt</title>
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
 <link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/style-nb.css">
 <script src="/js/jquery-3.5.1.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/theme.js"></script>
-<script src="/js/searchinvoice.js"></script>
 <script src="/js/printreceipt.js"></script>
+<style type="text/css">
+    @media print {  
+    @page{ 
+        margin: 0 -6cm;
+    } 
+    html {margin: 0 6cm};
+    body { 
+        padding-top: 72px; 
+        padding-bottom: 72px ; 
+        background-color: silver;
+        border: solid 1px blue;
+    } 
+} 
+</style>
 </head>
 <body>
 <div class="wrapper">
@@ -29,7 +41,7 @@
 	<ul class="nav navbar-nav navbar-dark" >
 		<li class="nav-item"><a class="nav-link" href="UserHome.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="NewBilling.html"><i class="fas fa-file-invoice-dollar"></i><span>New Invoice</span></a></li>
-		<li class="nav-item"><a class="nav-link active" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span>Search Inv</span></a></li>
+		<li class="nav-item"><a class="nav-link" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span>Search Inv</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-database"></i><span>Invenstory</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-plus-circle"></i><span>Add Item</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="home.html"><i class="fas fa-power-off"></i><span>Log out</span></a></li>
@@ -66,127 +78,60 @@
 		</div>
 	</nav>
 	<div style="height: 70px;"></div>
+		
 	<!-- content body -->
-<div class="container-fluid contentbar">
-<!--        write conent below this point  -->
-
-<!-- search options -->
-<div class="row mb-2"> 
-	<div class="col p-2 bg-white shadow">
-		<div class="form-row">
-		<div class="col-sm-4 col-md-3 myform">
-			<label class="form-label">Start Date: </label>
-			<input type="date" class="form-control" id="srchStartDate">
-		</div>
-		<div class="col-sm-4 col-md-3 myform">
-			<label class="form-label">End Date: </label>
-			<input type="date" class="form-control" id="srchEndDate">
-		</div>
-		<div class="col-sm-4 col-md-3 myform">
-			<label class="form-label">Bill#: </label>
-			<div class="input-group">
-				<div class="input-group-prepend">
-					<div class="input-group-text">
-						<input type="checkbox" id="srchBillCheckbox" onchange="enableSearchByBill()"> 
-				  	</div>
-				</div>
-				<input type="number" class="form-control" value="0" id="srchBillNo" disabled>
-			  </div>
-		</div>
-		<div class="col-sm-12 col-md-3  d-flex align-items-end mt-2">
-			<button class="btn btn-primary btn-block" type="button">Search</button>
-		</div>
-		</div>
-	</div>
+	<div class="container-fluid">
+<!----------------------- start body from here ----------------------------->
+<div class="row">
+    <div class="col-md-12 bg-white shadow">
+        <h4 class="text-success">Bill No: 4</h4>
+        <strong>Date: </strong>01 Feb 2021 <strong> Time: </strong> 11:00 AM
+        <div class="table-responsive">
+            <table class="table table-hover" id="search-detail-table">
+                <tr class="table-light">
+                <th>#</th>
+                <th>Description</th>
+                <th>Unit Price</th>
+                <th>Qty</th>
+                <th>Total Price</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>test bill</td>
+                    <td>11.11</td>
+                    <td>2</td>
+                    <td>22.22</td>
+                    </tr>
+        
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div class="col-12 border-bottom mb-2"></div>
+            <h4 class="text-success">Total bill</h4>
+            <div class="row">
+                <div class="col-6">Total </div>
+                <div class="col-1">Rs.</div>
+                <div class="col-4 text-right" id="totalBill">0.00</div>
+            </div>
+            <div class="row">
+                <div class="col-6">GST 18% (NA)</div>
+                <div class="col-1">Rs.</div>
+                <div class="col-4 text-right" id="gst">0.00</div>
+            </div>
+            <div class="col-12 border-bottom mb-2"></div>
+            <div class="row mb-3">
+                <div class="col-6">Payable</div>
+                <div class="col-1">Rs.</div>
+                <div class="col-4 text-right" id="payable">0.00</div>
+            </div>
+        </div>
+        <div class="text-center mb-2">
+            <button class="btn btn-primary" onclick="printReceipt()">Print</button>
+            <a href="UserHome.html" class="btn btn-secondary">Close</a>
+        </div>
+    </div>
 </div>
-
-<!-- search result -->
-
-<div class="row mb-2" id="sell-header-div">
-<div class="col bg-white shadow p-0">
-	<div class="table-responsive">
-		<table class="table table-hover" id="search-table">
-			<tr class="table-light">
-				<th>Date</th>
-				<th>Invoice#</th>
-				<th>Seller</th>
-				<th>#Items</th>
-				<th>Total Amount</th>
-				<th></th>
-			</tr>
-			<tr>
-				<td>27 Jan 2021</td>
-				<td>1234</td>
-				<td>Sample Seller</td>
-				<td>4</td>
-				<td>123.45</td>
-				<td class="text-center">
-					<span class="btn fas fa-info text-info" data-toggle="tooltip" title="Details" onclick="selldetails()">
-					</span>
-					<span class="btn fas fa-edit text-danger" data-toggle="tooltip" title="Update" >	
-					</span>
-				</td>
-			</tr>
-		</table>
-	</div>
-</div>
-</div>
-
-<div class="row collapse" id="sell-detail-div">
-<div class="col-md-12 bg-white shadow">
-	<div class="col-12 text-right">
-		<button class="btn close" onclick="showSellHeader()">&times;</button>
-	</div>
-	<h4 class="text-success">Bill No: 4</h4>
-	<span> Date</span>
-	<div class="table-responsive">
-		<table class="table table-hover" id="search-detail-table">
-			<tr class="table-light">
-			<th>#</th>
-			<th>Description</th>
-			<th>Unit Price</th>
-			<th>Qty</th>
-			<th>Total Price</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>test bill</td>
-				<td>11.11</td>
-				<td>2</td>
-				<td>22.22</td>
-				</tr>
-	
-		</table>
-	</div>
-	<div class="col-md-6">
-		<div class="col-12 border-bottom mb-2"></div>
-		<h4 class="text-success">Total bill</h4>
-		<div class="row">
-			<div class="col-6">Total </div>
-			<div class="col-1">Rs.</div>
-			<div class="col-4 text-right" id="totalBill">0.00</div>
-		</div>
-		<div class="row">
-			<div class="col-6">GST 18%</div>
-			<div class="col-1">Rs.</div>
-			<div class="col-4 text-right" id="gst">0.00</div>
-		</div>
-		<div class="col-12 border-bottom mb-2"></div>
-		<div class="row mb-3">
-			<div class="col-6">Payable</div>
-			<div class="col-1">Rs.</div>
-			<div class="col-4 text-right" id="payable">0.00</div>
-		</div>
-	</div>
-	<div class="text-center mb-2">
-		<button class="btn btn-danger">Update</button>
-		<button class="btn btn-primary" onclick="printReceipt()">Print</button>
-		<button class="btn btn-secondary" onclick="showSellHeader()">Close</button>
-	</div>
-</div>
-</div>
-
-<div class="container bg-white my-4 collapse" id="print-div">
+<div class="container bg-white my-4" id="print-div">
     <div class="h4 text-center mt-4">Demo Super Mart</div>
     <div class="text-center">Station Road, Raigarh</div>
     <div class="text-center">Ph: +91 981234567</div>
@@ -260,9 +205,9 @@
     <div class="col-12">Payment Reference: DRTY432TE</div>
     <hr>
 </div>
-
-<!--        write conent above this point  -->
-</div> <!-- end of content body -->
+<!----------------------- end body here ----------------------------->
+	</div> <!-- end of content body -->
+		
 </div> <!-- end of content area-->
 </div> <!-- end of wrapper -->
 </body>
