@@ -5,24 +5,14 @@ $(document).ready(function(){
     let d = new Date();
     $('#date-today').html('<b>Date :</b> ' + d.toDateString() + '   <b>Time:</b> ' + d.toTimeString().substr(0,8));
     
-    /* change background color of input boxes */
-    inputBgColor();
+    
 
     initAddForm();
     /* Calculate total when unit price or quantity changes */
     calculateTotalPrice();
     
 });
- /* change background color of input boxes */
-function inputBgColor(){
-    $('input').focusin(function(){
-        $(this).css("background-color","#FFFFCC");
-    });
-    $('input').focusout(function(){
-        $(this).css("background-color","#FFFFFF");
-    });
-    $('input').focus(function(){$(this).select();})
-}
+
  /* Calculate total when unit price or quantity changes */
 function calculateTotalPrice(){
     let totalPrice = 0;

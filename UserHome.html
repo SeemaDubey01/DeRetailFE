@@ -17,7 +17,7 @@
 <div class="container-fluid sidebar">
 	<!-- sidebar top navigation -->
 	<nav class="navbar fixed-top navbar-dark header-hr">
-		<div class="navbar-brand fas fa-shopping-cart"></div>
+		<div class="navbar-brand fas fa-shopping-cart" id="brand-icon"></div>
 		<div class="navbar-brand" id="sidebar-brand">DeRetail</div>
 	</nav>
 
@@ -27,8 +27,14 @@
 		<li class="nav-item"><a class="nav-link" href="UserHome.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="NewBilling.html"><i class="fas fa-file-invoice-dollar"></i><span>New Invoice</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="SearchInvoice.html"><i class="fas fa-search-dollar"></i><span>Search Inv</span></a></li>
-		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-database"></i><span>Invenstory</span></a></li>
-		<li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-plus-circle"></i><span>Add Item</span></a></li>
+		<li class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"><i class="fas fa-database"></i><span>Inventory</span></a>
+            <ul class="dropdown-menu sidebar-dropdown" id="inventory-submenu">
+                <li><a class="dropdown-item" href="AddProduct.html">Add Product</a></li>
+                <li><a class="dropdown-item" href="SearchProduct.html">Search Product</a></li>
+            </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="InventoryHome.html"><i class="fas fa-plus-circle"></i><span>Add Item</span></a></li>
 		<li class="nav-item"><a class="nav-link" href="home.html"><i class="fas fa-power-off"></i><span>Log out</span></a></li>
 	</ul>
 	</nav>

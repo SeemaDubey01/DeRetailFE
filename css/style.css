@@ -3,6 +3,9 @@
 .navbar-brand {
     font-size: 2rem;
 }
+#brand-icon{
+    transform: rotate(-15deg);
+}
 .header-hr{
     border-bottom: 1px solid rgba(255,255,255,0.5);
 }
@@ -53,7 +56,6 @@
 }
 .sidebar-fixed-nav {
     top: 6rem;
-    margin-left: 10px;
 }
 .sidebar-fixed-nav i {
     width: 20px;
@@ -90,9 +92,15 @@
 .border-left-secondary{
     border-left: 4px solid #6c757d;
 }
+.sidebar-dropdown {
+    background-color: #1a6c19;
+    border: 1px solid rgba(255,255,255,0.5);
+}
+.sidebar-dropdown .dropdown-item {color:rgba(255,255,255,0.5)}
+.sidebar-dropdown .dropdown-item:hover {color:rgba(255,255,255,0.75); background-color: transparent;}
 .sidebarHalfToggler{
-    position:fixed;
-    top:400px; left: 4rem;
+    position:relative;
+    top:100px; left: 4rem;
     border-radius: 50%;
     background-color: hsla(0,0%,100%,.25);
     color: white;
@@ -100,7 +108,7 @@
     text-align: center;
     cursor: pointer;
 }
-.sidebarHalfToggler.toggled {top: 600px; left:1.5rem;}
+.sidebarHalfToggler.toggled {left:0.7rem;}
 
 .sidebarHalfToggler.toggled:after{font-weight:900;content:"\f105";
     font-family:Font Awesome\ 5 Free;}
@@ -110,3 +118,4 @@
 .border-transparent-1 {border: 1rem solid transparent;}
 .m-width-td-1 {max-width: 1rem;}
 .m-width-td-4 {max-width: 5rem;}
+.myform label {margin-bottom:0; margin-top:10px; padding-left: 5px;}
